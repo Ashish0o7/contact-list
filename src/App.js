@@ -7,6 +7,7 @@ import Register from "./Register";
 import { useState } from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import BudgetTracker from "./Dailyexp";
+import Mainpg from "./main";
 
 function App() {
   const [userEmail, setUserEmail] = useState('');
@@ -16,9 +17,10 @@ function App() {
       
       <Router>
       <Routes>
-        <Route exact path="/" element={<Landing />} />
+        <Route exact path="/" element={<Mainpg/>} />
           <Route path="/login" element={<Login setUserEmail={setUserEmail} />} />
           <Route path="/Dailyexp" element={<BudgetTracker/>}/>
+          <Route path="/contacts" element={<Landing/>}/>
           <Route path="/register" element={<Register setUserEmail={setUserEmail}/>} />
       </Routes>
     </Router>

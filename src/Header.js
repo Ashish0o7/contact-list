@@ -26,7 +26,11 @@ function Header() {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-gradient-to-r from-teal-500 to-black text-white px-4 py-2 flex flex-col sm:flex-row items-center justify-between z-30">
+    <div className="fixed top-0 left-0 w-full bg-gradient-to-r from-teal-500 to-black text-white px-4 py-2 flex flex-col sm:flex-row items-center justify-between z-30"
+    style={{
+      background: "linear-gradient(-45deg, #ff6699 0%, #66ccff 50%, #99ff66 100%)",
+
+    }}>
       <div className="flex items-center">
         <Link to="/" className="flex items-center">
           <img
@@ -35,14 +39,15 @@ function Header() {
             alt="Contact List Icon"
           />
           <span className="ml-2 text-black font-bold text-lg sm:text-xl">
-            Contact List
+            Assistance+
           </span>
         </Link>
         
       </div>
         <div className="flex items-center space-x-6 sm:space-x-12 mt-2 sm:mt-0">
             <Link to="/Dailyexp" className="text-sm sm:text-base font-medium hover:text-gray-300 transition duration-200">Daily Expenses</Link>
-            </div>
+            <Link to="/contacts" className="text-sm sm:text-base font-medium hover:text-gray-300 transition duration-200">Contacts</Link>
+        </div>
       <div className="flex items-center space-x-2">
         {localStorage.getItem("email") ? (
           <div className="flex items-center space-x-2">

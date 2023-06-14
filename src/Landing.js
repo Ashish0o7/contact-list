@@ -99,7 +99,7 @@ const Landing = () => {
     try {
       const userEmail = localStorage.getItem("email");
       const response = await fetch(
-        `http://localhost:3001/contacts`,
+        `https://backend-contact-list.onrender.com/contacts`,
         {
           method: "POST",
           headers: {
@@ -129,14 +129,14 @@ const Landing = () => {
   return (
     <>
       <Header />
-      <div className="container mx-auto px-4 py-8"
+      <div className="min-h-screen min-w-screen container mx-auto px-4 py-8"
            style={{
              background:
-                 "linear-gradient(-45deg, #B2F5EA 50%, #ABEBC6 50%)",
+                 "linear-gradient(-45deg,  #ff6e54 0%, #66ccff 50%,  #ff6699 100%)",
            }}>
         {isLoggedIn ? (
           <>
-            <div className="bg-gradient-to-r from-blue-200 to-blue-400 text-black rounded-lg p-4 shadow-md flex flex-col items-center justify-center px-4 py-8 mt-8"
+            <div className="min-w-screen bg-gradient-to-r from-blue-200 to-blue-400 text-black rounded-lg p-4 shadow-md flex flex-col items-center justify-center px-4 py-8 mt-12"
                  style={{
                    background:
                        "linear-gradient(-45deg, #E2E8F0 50%, #F7FAFC 50%)",
