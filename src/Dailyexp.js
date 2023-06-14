@@ -16,7 +16,7 @@ const BudgetTracker = () => {
 
     const fetchExpenses = async (storedEmail) => {
         try {
-            const response = await fetch(`http://localhost:3001/expenses?email=${storedEmail}`);
+            const response = await fetch(`https://backend-contact-list.onrender.com/expenses?email=${storedEmail}`);
             const data = await response.json();
             setExpenses(data);
         } catch (error) {
@@ -35,7 +35,7 @@ const BudgetTracker = () => {
 
             try {
                 const storedEmail = localStorage.getItem('email');
-                const response = await fetch('http://localhost:3001/expenses', {
+                const response = await fetch('https://backend-contact-list.onrender.com/expenses', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
