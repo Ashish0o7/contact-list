@@ -60,7 +60,7 @@ const Landing = () => {
     try {
       const { _id } = editedContact;
 
-      await fetch(`https://backend-contact-list.onrender.com/contacts/${_id}`, {
+      await fetch(`http://localhost:3001/contacts/${_id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -99,7 +99,7 @@ const Landing = () => {
     try {
       const userEmail = localStorage.getItem("email");
       const response = await fetch(
-        `https://backend-contact-list.onrender.com/contacts`,
+        `http://localhost:3001/contacts`,
         {
           method: "POST",
           headers: {
@@ -129,48 +129,58 @@ const Landing = () => {
   return (
     <>
       <Header />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8"
+           style={{
+             background:
+                 "linear-gradient(-45deg, #B2F5EA 50%, #ABEBC6 50%)",
+           }}>
         {isLoggedIn ? (
           <>
-            <h2 className="text-xl font-bold mb-2 mt-8">Create Contact</h2>
-            <div className="flex items-center space-x-2">
-              <input
-                type="text"
-                placeholder="Name"
-                value={newContactName}
-                onChange={(e) => setNewContactName(e.target.value)}
-                className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500"
-              />
-              <input
-                type="tel"
-                placeholder="Phone"
-                value={newContactPhone}
-                onChange={(e) => setNewContactPhone(e.target.value)}
-                className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500"
-              />
-              <input
-                type="mail"
-                placeholder="Contact mail"
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-                className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500"
-              />
-              <button
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
-                onClick={handleCreateContact}
-              >
-                Create
-              </button>
+            <div className="bg-gradient-to-r from-blue-200 to-blue-400 text-black rounded-lg p-4 shadow-md flex flex-col items-center justify-center px-4 py-8 mt-8"
+                 style={{
+                   background:
+                       "linear-gradient(-45deg, #E2E8F0 50%, #F7FAFC 50%)",
+                 }}
+            >
+              <h2 className="text-2xl font-bold mb-4">Create Contact</h2>
+              <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={newContactName}
+                  onChange={(e) => setNewContactName(e.target.value)}
+                  className="border border-gray-300 text-black rounded px-4 py-2 focus:outline-none focus:border-blue-500"
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone"
+                  value={newContactPhone}
+                  onChange={(e) => setNewContactPhone(e.target.value)}
+                  className="border border-gray-300 text-black rounded px-4 py-2 focus:outline-none focus:border-blue-500"
+                />
+                <input
+                  type="mail"
+                  placeholder="Contact mail"
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                  className="border border-gray-300 text-black rounded px-4 py-2 focus:outline-none focus:border-blue-500"
+                />
+                <button
+                  className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-green-600 transition duration-200"
+                  onClick={handleCreateContact}
+                >
+                  Create
+                </button>
+              </div>
             </div>
-            <h2 className="text-xl font-bold py-8">
-              Contacts Saved :{" "}
-            </h2>
+
+            <h2 className="text-xl font-bold py-8">Contacts Saved : </h2>
             {contacts.length > 0 ? (
               <ul className="space-y-1">
                 {contacts.map((contact) => (
-                  <li key={contact._id} className="bg-white p-2 rounded">
+                  <li key={contact._id} className="p-2 rounded">
                     {editedContact && editedContact._id === contact._id ? (
-                      <div className="flex items-center">
+                      <div className="flex items-center ">
                         <input
                           type="text"
                           value={newContactName}
@@ -198,7 +208,7 @@ const Landing = () => {
                       </div>
                     ) : (
                       <>
-                        <div className="bg-gray-100 rounded-lg p-4 shadow-md flex items-center justify-between">
+                        <div className="bg-gradient-to-r from-gray-200 to-cyan-200 text-white rounded-lg p-4 shadow-md flex items-center justify-between">
                           <div>
                             <p className="text-2xl font-bold mb-2 text-gray-800">
                               {contact.name}
@@ -232,20 +242,18 @@ const Landing = () => {
               </ul>
             ) : (
               <>
-              <div class="flex items-center">
-                <h4 class="text-xl font-bold">Loading........</h4>
-                <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-black"></div>
-
-               
-              </div>
-               <p class="mr-2 mb-4 font-bold">
+                <div class="flex items-center">
+                  <h4 class="text-xl font-bold">Loading........</h4>
+                  <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-black"></div>
+                </div>
+                <p class="mr-2 mb-4 font-bold">
                   Please wait for a while, probably the API calls to the server
-                  are taking time. 
+                  are taking time.
                   <br></br>
                   <br></br>
                   Else, you have not added any contacts.
                 </p>
-                </>
+              </>
             )}
           </>
         ) : (
