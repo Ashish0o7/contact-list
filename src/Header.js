@@ -46,7 +46,8 @@ function Header() {
       </div>
         <div className="flex items-center space-x-6 sm:space-x-12 mt-2 sm:mt-0">
             <Link to="/Dailyexp" className="text-sm sm:text-base font-medium hover:text-gray-300 transition duration-200">Daily Expenses</Link>
-            <Link to="/contacts" className="text-sm sm:text-base font-medium hover:text-gray-300 transition duration-200">Contacts</Link>
+            <Link to="/dallE" className="text-sm sm:text-base font-medium hover:text-gray-300 transition duration-200">DallE Image Generation</Link>
+          <Link to="/contacts" className="text-sm sm:text-base font-medium hover:text-gray-300 transition duration-200">Contacts</Link>
         </div>
       <div className="flex items-center space-x-2">
         {localStorage.getItem("email") ? (
